@@ -1,0 +1,42 @@
+.weather-display__container {
+  width: 100%;
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: minmax(375px ,460px) minmax(485px,980px);
+  grid-template-rows: 340px 1fr;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.7);
+}
+
+.week-weather__container {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  background-color: #100E1D;
+}
+.today-highlights__container {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: #100E1D;
+}
+@media (max-width: 500px) {
+  .weather-display__container {
+    grid-template-columns: minmax(375px, 1fr);
+    grid-template-rows: 810px 710px 1070px;
+  }
+  .current-weather__container {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  .week-weather__container {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+  .today-highlights__container {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+}
+@media (max-width: 1220px) {
+  
+}

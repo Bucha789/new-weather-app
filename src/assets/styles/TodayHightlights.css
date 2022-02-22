@@ -1,0 +1,127 @@
+.today-highlights__container {
+  padding: 0 23px;
+  background-color: #100E1D;
+  color: #E7E7EB;
+}
+.today-highlights__container h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.hightlights-item__container {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 328px 328px;
+  gap: 48px;
+  padding-bottom: 115px;
+}
+.hightlights__item {
+  background-color: #1E213A;
+  text-align: center;
+}
+.hightlights__item h3 {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.hightlights__item p {
+  font-weight: 700;
+  font-size: 6.4rem;
+  margin-bottom: 30px;
+}
+.hightlights__item p span {
+  font-weight: 500;
+  font-size: 3.6rem;
+}
+.wind-speed__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.wind-speed__container span {
+  font-size: 1.4rem;
+}
+.wind-arrow {
+  width: 20px;
+  height: 20px;
+  background-color: #6E707A;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+}
+.wind-arrow i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+.progress-bar__container {
+  width: 230px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.checkpoints {
+  width: 100%;
+  display: inherit;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+.checkpoints span, .progress-bar__container span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #A09FB1;
+}
+.progress-bar__container .percent {
+  align-self: flex-end;
+  margin-bottom: 23px;
+}
+.bar {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background-color: #E7E7EB;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 84%;
+  height: 100%;
+  background-color: #FFEC65;
+  border-radius: 4px;
+}
+.credits {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  color: #A09FB1;
+  margin: 0 auto;
+  padding-bottom: 24px;
+}
+
+/* @media (max-width: 500px) {
+  .hightlights-item__container {
+    grid-template-columns: 328px;
+    gap: 48px;
+    padding-bottom: 95px;
+  }  
+} */
+@media (max-width: 1220px) {
+  .hightlights-item__container {
+    grid-template-columns: 328px;
+    gap: 48px;
+    padding-bottom: 95px;
+  }
+
+
+  
+}
