@@ -1,10 +1,54 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
+import { useForm } from '../../hooks/useForm'
+import { getPlaces } from '../../helpers/getPlaces.js'
+import '../../assets/styles/SearchContainer.css'
+import { AppContext } from '../../context/AppContext'
+import getWeatherData from '../../helpers/getWeatherData'
 
-export const SearchPlacesContainer = () => {
-  return (
-    <div style={{
-      display: 'none'
+export const SearchPlacesContainer = ({hidden}) => {
+  const [dispatch] = useContext(AppContext);
+  const [results, setResults] = useState([])
+  const [formValues, handleInputChange] = useForm({
+  keyword: 'nogales' 
+  })
+  const { keyword } = formValues;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getPlaces(keyword).then(data =>{
+      setResults(data)
     }
-    }>Aqui Podrás buscar como un loco :v</div>
+    )
+  } 
+  
+  const handleWeatherData = (item) => {
+    hidden(false)
+    getWeatherData(item).then(data => console.log(data))
+  }
+  return (
+    <div className="search__container">
+      <i onClick={() => hidden(false)} className="fas fa-times"></i>
+      <form onSubmit={handleSubmit} className="search__input">
+        <div className="input__container">
+          <i className="fas fa-search"></i>
+          <input type="text" name='keyword' onChange={handleInputChange} placeholder="search location" />
+        </div>
+        <button>Search</button>
+      </form>
+      <div className="search__results">
+        {results.length > 0
+          ? results.map((item) => (
+              <div
+                key={item.name}
+                onClick={() => handleWeatherData(item)}
+                className="result__container"
+              >
+                <h3>{item.name}</h3>
+                <p>&#62;</p>
+              </div>
+            ))
+          : null}
+      </div>
+    </div>
   )
 }

@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import cloudBackground from '../../assets/images/Cloud-background.png';
 
 import '../../assets/styles/CurrentWeather.css';
+import { SearchPlacesContainer } from '../search/SearchPlacesContainer';
 
 export const CurrentWeatherDisplay = () => {
+
+  const [showSearch, setShowSearch] = useState(false);
   return (
     <div className='current-weather__container'>
+      {
+        showSearch &&
+        <SearchPlacesContainer hidden={setShowSearch} />
+      }
       <div className='current-weather__controls'>
-        <button>Search for places</button>
+        <button onClick={() =>setShowSearch(true)}>Search for places</button>
         <span>
           <i className='fas fa-bullseye'></i>
         </span>
@@ -14,7 +23,7 @@ export const CurrentWeatherDisplay = () => {
       <div className='current-weather__state'>
         <img
           className='background'
-          src='hola.png'
+          src={cloudBackground}
           alt='Cloud-background'
         />
         {/* {weather ? <ImageDisplay state={weather[0].main} /> :  */}
