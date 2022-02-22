@@ -58,18 +58,15 @@ h2 {
   width: 760px;
   opacity: 5%;
 }
-.current-weather__state div img, .null__search {
+.current-weather__state div img {
   margin-top: 75px;
+  margin-bottom: 80px;
   width: 200px;
   opacity: 0;
   animation-name: fadeIn;
   animation-delay: 1s;
   animation-duration: 1s;
   animation-fill-mode: forwards;
-}
-.null__search {
-  font-size: 12rem;
-  margin-bottom: 80px;
 }
 .current-weather__temp h2 {
   font-size: 14.4rem;
@@ -89,7 +86,7 @@ h2 span {
   display: block;
   text-align: center;
   font-size: 3.6rem;
-  margin-bottom: 87px;
+  margin-bottom: 50px;
 }
 .current-weather__temp p {
   font-size: 1.8rem;
@@ -126,7 +123,7 @@ h2 span {
   .current-weather__state .background {
     width: 564px;
   }
-  .null__search {
+  .current-weather__state div img {
     margin-bottom: 20px;
   }
 }

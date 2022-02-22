@@ -4,9 +4,10 @@ import { getPlaces } from '../../helpers/getPlaces.js'
 import '../../assets/styles/SearchContainer.css'
 import { AppContext } from '../../context/AppContext'
 import getWeatherData from '../../helpers/getWeatherData'
+import { types } from '../../types'
 
 export const SearchPlacesContainer = ({hidden}) => {
-  const [dispatch] = useContext(AppContext);
+  const [, dispatch] = useContext(AppContext);
   const [results, setResults] = useState([])
   const [formValues, handleInputChange] = useForm({
   keyword: 'nogales' 
@@ -22,8 +23,17 @@ export const SearchPlacesContainer = ({hidden}) => {
   } 
   
   const handleWeatherData = (item) => {
-    hidden(false)
-    getWeatherData(item).then(data => console.log(data))
+    getWeatherData(item).then(data =>{
+      const action = {
+        type: types.infoUdapte,
+        payload: {
+          place: item,
+          weatherStats: data
+        }
+      }
+      dispatch(action)
+      hidden(false)
+    })
   }
   return (
     <div className="search__container">

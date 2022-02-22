@@ -5,11 +5,26 @@ import { appReducer } from './reducers/appReducer';
 
 import './assets/styles/index.css';
 
-export const WeatherApp = () => {
-  const initialState = useReducer(appReducer, {
-    message: 'Hola estoy viendo si estoy conectando bien la app',
-  });
+const defaultState = {
+  place: {
+    name: 'Nothing,'
+  }, 
+  weatherStats: {
+    current: {
+      temp: 0,
+      humidity: 0,
+      win_deg: 0,
+      win_speed: 0,
+      visibility: 0,
+      weather: [{
+        main: 'No place Selected'
+      }]
+    }
+  }
+}
 
+export const WeatherApp = () => {
+  const initialState = useReducer(appReducer, defaultState);
   return (
     <AppContext.Provider value={initialState}>
         <main className='main__container'>

@@ -3,7 +3,12 @@ export default function getWeatherData ({latitude, longitude}) {
   return(
     fetch(API)
     .then(res => res.json())
-    .then(response => response)
+    .then(response => {
+      return {
+        current: response.current,
+        daily: response.daily
+      }
+    })
     .catch(res => console.log(res))
   )
 }
