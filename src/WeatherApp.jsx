@@ -20,7 +20,18 @@ const defaultState = {
       weather: [{
         main: 'No place Selected'
       }]
-    }
+    },
+    daily: [
+      {
+        temp: {
+          min: 0,
+          max: 0,
+        },
+        weather: [{
+          main: 'No place Selected'
+        }]
+      }
+    ]
   }
 }
 

@@ -4,7 +4,7 @@ import cloudBackground from '../../assets/images/Cloud-background.png';
 
 import '../../assets/styles/CurrentWeather.css';
 import { AppContext } from '../../context/AppContext';
-import getTodayDate from '../../helpers/getTodayDate';
+import getWeekDates from '../../helpers/getWeekDates';
 import { SearchPlacesContainer } from '../search/SearchPlacesContainer';
 import { WeatherImage } from './WeatherImage';
 
@@ -16,7 +16,7 @@ export const CurrentWeatherDisplay = () => {
   const name = place.name.slice(0, index)
   const {temp, weather} = weatherStats.current;
   const [description] = weather;
-  const [dayName, month, dayNumber] = getTodayDate()
+  const [todayDate] = getWeekDates()
   return (
     <div className='current-weather__container'>
       {
@@ -44,7 +44,7 @@ export const CurrentWeatherDisplay = () => {
           <span>{description.main}</span>
           <p>
             Today<span>•</span>
-            {dayName}, {dayNumber} {month}
+            {todayDate}
           </p>
           <p>
             <i className='fas fa-map-marker-alt'></i> {name}
