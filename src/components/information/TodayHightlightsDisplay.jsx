@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import '../../assets/styles/TodayHightlights.css';
+import { AppContext } from '../../context/AppContext';
 
 export const TodayHightlightsDisplay = () => {
+
+  const [state] = useContext(AppContext);
+  const {weatherStats} = state;
+  const {current} = weatherStats;
+  const {humidity, visibility, wind_speed, wind_deg, pressure} = current; 
+
+
+  useEffect(() => {
+    document.querySelector('.progress').style.width = `${humidity}%`
+    document.querySelector('#windArrow').style.transform = `translate(-50%, -50%) rotate(${wind_deg - 90}deg)`
+  }, [humidity, wind_deg])
+
+
   return (
     <div className='today-highlights__container'>
        <h2>Today's Hightlights</h2>
@@ -10,20 +24,20 @@ export const TodayHightlightsDisplay = () => {
         <div className="hightlights__item">
           <h3>Wind status</h3>
           <p>
-            10
+            {Math.ceil(wind_speed)}
             <span>Km/h</span>
           </p>
           <div className="wind-speed__container">
             <div className="wind-arrow">
-              <i className="fas fa-location-arrow"></i>
+              <i id='windArrow' className="fas fa-location-arrow"></i>
             </div>
-            <span>45°</span>
+            <span>{wind_deg}deg</span>
           </div>
         </div>
         <div className="hightlights__item">
           <h3>Humidity</h3>
           <p>
-            84
+            {humidity}
             <span>%</span>
           </p>
           <div className="progress-bar__container">
@@ -41,13 +55,13 @@ export const TodayHightlightsDisplay = () => {
         <div className="hightlights__item">
           <h3>Visibility</h3>
           <p>
-            6,4 <span>Km</span>
+            {visibility / 10}<span>Km</span>
           </p>
         </div>
         <div className="hightlights__item">
           <h3>Air Pressure</h3>
           <p>
-            998 <span>mb</span>
+            {pressure}<span>mb</span>
           </p>
         </div>
       </div>

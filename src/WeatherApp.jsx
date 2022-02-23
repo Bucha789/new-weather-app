@@ -16,6 +16,7 @@ const defaultState = {
       win_deg: 0,
       win_speed: 0,
       visibility: 0,
+      pressure: 0,
       weather: [{
         main: 'No place Selected'
       }]
