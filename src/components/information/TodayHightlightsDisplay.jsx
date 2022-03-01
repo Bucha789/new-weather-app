@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 
 import '../../assets/styles/TodayHightlights.css';
 import { AppContext } from '../../context/AppContext';
+import { getWindDirection } from '../../helpers/getWindDirection';
 
 export const TodayHightlightsDisplay = () => {
 
@@ -9,17 +10,17 @@ export const TodayHightlightsDisplay = () => {
   const {weatherStats} = state;
   const {current} = weatherStats;
   const {humidity, visibility, wind_speed, wind_deg, pressure} = current; 
-
+  const windDirection = getWindDirection(wind_deg)
 
   useEffect(() => {
     document.querySelector('.progress').style.width = `${humidity}%`
-    document.querySelector('#windArrow').style.transform = `translate(-50%, -50%) rotate(${wind_deg - 90}deg)`
+    document.querySelector('#windArrow').style.transform = `translate(-45%, -45%) rotate(${wind_deg - 90}deg)`
   }, [humidity, wind_deg])
 
 
   return (
     <div className='today-highlights__container'>
-       <h2>Today's Hightlights</h2>
+        <h2>Today's Hightlights</h2>
       <div className="hightlights-item__container">
         <div className="hightlights__item">
           <h3>Wind status</h3>
@@ -31,7 +32,7 @@ export const TodayHightlightsDisplay = () => {
             <div className="wind-arrow">
               <i id='windArrow' className="fas fa-location-arrow"></i>
             </div>
-            <span>{wind_deg}deg</span>
+            <span>{windDirection}</span>
           </div>
         </div>
         <div className="hightlights__item">

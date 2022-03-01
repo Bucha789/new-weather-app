@@ -45,18 +45,19 @@
   font-size: 1.4rem;
 }
 .wind-arrow {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background-color: #6E707A;
   border-radius: 50%;
   margin-right: 8px;
   position: relative;
 }
 .wind-arrow i {
+  font-size: 1.4rem;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(180deg);
+  transform: translate(-45%, -45%) rotate(180deg);
 }
 .progress-bar__container {
   width: 230px;
@@ -108,20 +109,19 @@
   padding-bottom: 24px;
 }
 
-/* @media (max-width: 500px) {
-  .hightlights-item__container {
-    grid-template-columns: 328px;
-    gap: 48px;
-    padding-bottom: 95px;
-  }  
-} */
+@media (max-width: 500px) {
+  .wind-arrow {
+    width: 20px;
+    height: 20px;
+  } 
+  .wind-arrow i {
+    font-size: 1rem;
+  }
+}
 @media (max-width: 1220px) {
   .hightlights-item__container {
     grid-template-columns: 328px;
     gap: 48px;
     padding-bottom: 95px;
   }
-
-
-  
 }

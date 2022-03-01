@@ -1,42 +1,44 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { MainWeatherDisplay } from './components/information/MainWeatherDisplay';
 import { AppContext } from './context/AppContext';
 import { appReducer } from './reducers/appReducer';
+import { getLocalStorage } from './helpers/getLocalStorage';
+import { defaultState } from './utils/demoData';
+import { types } from './types';
+import getWeatherData from './helpers/getWeatherData';
+
 
 import './assets/styles/index.css';
 
-const defaultState = {
-  place: {
-    name: 'Nothing,'
-  }, 
-  weatherStats: {
-    current: {
-      temp: 0,
-      humidity: 0,
-      win_deg: 0,
-      win_speed: 0,
-      visibility: 0,
-      pressure: 0,
-      weather: [{
-        main: 'No place Selected'
-      }]
-    },
-    daily: [
-      {
-        temp: {
-          min: 0,
-          max: 0,
-        },
-        weather: [{
-          main: 'No place Selected'
-        }]
-      }
-    ]
+const init = () => {
+  const lastPlace = getLocalStorage('lastPlace');
+  if (lastPlace) {
+    return {
+      ...defaultState,
+      place: lastPlace
+    }
+  } else {
+    return defaultState;
   }
 }
 
 export const WeatherApp = () => {
-  const initialState = useReducer(appReducer, defaultState);
+  const initialState = useReducer(appReducer, {}, init);
+  const [state, dispatch] = initialState;
+  useEffect(() => {
+    if (state.place.longitude && state.place.latitude) {
+      getWeatherData(state.place).then(data => {
+        dispatch({
+          type: types.infoUdapte,
+          payload: {
+            place: state.place,
+            weatherStats: data
+          }
+        })
+      })
+    }
+  }, [])
+
   return (
     <AppContext.Provider value={initialState}>
         <main className='main__container'>

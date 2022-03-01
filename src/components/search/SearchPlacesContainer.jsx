@@ -5,6 +5,7 @@ import '../../assets/styles/SearchContainer.css'
 import { AppContext } from '../../context/AppContext'
 import getWeatherData from '../../helpers/getWeatherData'
 import { types } from '../../types'
+import { setLocalStorage } from '../../helpers/getLocalStorage'
 
 export const SearchPlacesContainer = ({hidden}) => {
   const [, dispatch] = useContext(AppContext);
@@ -31,6 +32,7 @@ export const SearchPlacesContainer = ({hidden}) => {
           weatherStats: data
         }
       }
+      setLocalStorage('lastPlace', JSON.stringify(item));
       dispatch(action)
       hidden(false)
     })

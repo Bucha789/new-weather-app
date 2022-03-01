@@ -25,7 +25,7 @@ export const WeekWeatherDisplay = () => {
           if (index > 4) {
             return null
           }
-          return <div className="weather-stats__item">
+          return <div key={dateString} className="weather-stats__item">
             <h3>{dateString}</h3>
             <WeatherImage state={main} />
             <div>
@@ -38,8 +38,3 @@ export const WeekWeatherDisplay = () => {
     </div>
   )
 }
-/* <DayWeather day='Tomorrow' data={daylyStats[0]} />
-<DayWeather day='Day 2' data={daylyStats[1]} />
-<DayWeather day='Day 3' data={daylyStats[2]} />
-<DayWeather day='Day 4' data={daylyStats[3]} />
-<DayWeather day='Day 5' data={daylyStats[4]} /> */
