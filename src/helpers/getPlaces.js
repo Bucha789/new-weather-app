@@ -1,7 +1,5 @@
 export const getPlaces = (place) => {
-  const URL_API = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURI(
-    place
-  )}&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=AIzaSyDetjzC6BRLmDHiQZE-V7lM9j6Fph179uM`;
+  const URL_API =`https://proxy-google-mu.vercel.app/places/${place}`
   return fetch(URL_API)
     .then((res) => res.json())
     .then((data) => {
