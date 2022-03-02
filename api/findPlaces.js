@@ -2,7 +2,7 @@
 export default function findPlaces (place) {
   const URL_API = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURI(place)}&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=AIzaSyDetjzC6BRLmDHiQZE-V7lM9j6Fph179uM`;
   console.log(place)
-  return function (req, res) {
+  return (function (req, res) {
     return fetch(URL_API)
       .then(response => response.json())
       .then(data => {
@@ -20,7 +20,7 @@ export default function findPlaces (place) {
         }
       })
       .catch(err => console.log(err))
-  }
+  })();
 }
 // export default async function findPlaces (req, res, place) {
 // }
