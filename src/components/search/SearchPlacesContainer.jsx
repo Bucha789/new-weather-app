@@ -1,11 +1,12 @@
 import React, {useState, useContext} from 'react'
 import { useForm } from '../../hooks/useForm'
-import { getPlaces } from '../../helpers/getPlaces.js'
+// import { getPlaces } from '../../helpers/getPlaces.js'
 import '../../assets/styles/SearchContainer.css'
 import { AppContext } from '../../context/AppContext'
 import getWeatherData from '../../helpers/getWeatherData'
 import { types } from '../../types'
 import { setLocalStorage } from '../../helpers/getLocalStorage'
+import findPlaces from '../../../api/findPlaces'
 
 export const SearchPlacesContainer = ({hidden}) => {
   const [, dispatch] = useContext(AppContext);
@@ -14,10 +15,9 @@ export const SearchPlacesContainer = ({hidden}) => {
   keyword: 'nogales' 
   })
   const { keyword } = formValues;
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    getPlaces(keyword).then(data =>{
+    findPlaces(keyword).then(data =>{
       setResults(data)
     }
     )
